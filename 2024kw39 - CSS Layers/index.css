@@ -1,0 +1,30 @@
+@layer base, components;
+
+@layer components {
+    .button {
+        background-color: blue;
+        padding: 10px !important;
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+    }
+}
+
+@layer base {
+    .nav-list {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        width: 300px;
+    }
+
+    .nav-list a {
+        padding: 0;
+        color: black;
+        text-decoration: none;
+    }
+
+    .nav-list a:hover {
+        color: blue;
+    }
+}
