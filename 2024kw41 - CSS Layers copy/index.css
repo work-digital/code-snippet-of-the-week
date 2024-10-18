@@ -1,0 +1,64 @@
+:root {
+
+  
+    --example-color: hsl(225, 30%, 15%);
+  }
+  
+  html {
+    font-family: system-ui;
+  }
+  
+  body {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  header {
+    background: var(--example-color);
+    color: white;
+    padding: 1rem;
+  
+    position: relative;
+  }
+  
+  nav {
+    interpolate-size: allow-keywords;
+    
+    position: absolute;
+    background: hsl(from var(--example-color) h s 10%);
+    top: 100%;
+    left: 0;
+    width: 0;
+    overflow: clip;
+    visibility: hidden;
+  
+    transition: width 1s ease, visibility 1s;
+  }
+  
+  button[aria-expanded="true"] + nav {
+    height: auto;
+    width: auto;
+    visibility: visible;
+  }
+  
+  nav {
+    ul {
+      list-style: "";
+      margin: 0;
+      padding: 3rem;
+  
+      display: grid;
+      gap: 1rem;
+    }
+  
+    a {
+      color: white;
+      text-decoration: none;
+  
+      &:hover,
+      &:focus-visible {
+        color: hsl(from var(--example-color) h calc(s * 1.5) calc(l + 60));
+      }
+    }
+  }
+  
