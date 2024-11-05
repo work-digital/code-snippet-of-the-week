@@ -1,0 +1,42 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-container {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(9, 9, 121, 1) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* container-name: my-container;
+    container-type: inline-size; */
+    container: my-container / inline-size;
+}
+
+.content {
+    font-size: 3rem;
+    color: white;
+}
+
+@container my-container (width < 1200px) {
+    .content {
+        font-size: 2rem;
+        background: linear-gradient(
+            90deg,
+            rgba(30, 36, 0, 1) 0%,
+            rgba(121, 119, 9, 1) 35%,
+            rgba(157, 255, 0, 1) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
