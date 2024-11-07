@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Flags Example</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-header">Product Management</div>
+      </div>
+      <div class="card" data-feature-flag="ADVANCED_ANALYTICS">
+        <div class="card-header">Advanced Analytics</div>
+      </div>
+      <div class="card" data-feature-flag="EXPERIMENTAL_FEATURE">
+        <div class="card-header">Experimental Feature</div>
+      </div>
+      <div class="card" data-feature-flag="MULTIPLE_ALLOWANCES">
+        <div class="card-header">Multiple Allowances</div>
+      </div>
+      <div class="card" data-feature-flag="DISABLED_FEATURE">
+        <div class="card-header">DISABLED</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- // example in react
+
+      <div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Product Management</CardTitle>
+          </CardHeader>
+        </Card>
+        <FeatureEnabled featureFlag="ADVANCED_ANALYTICS">
+          <Card>
+            <CardHeader>
+              <CardTitle>Advanced Analytics</CardTitle>
+            </CardHeader>
+          </Card>
+        </FeatureEnabled>
+        <FeatureEnabled featureFlag="EXPERIMENTAL_FEATURE">
+          <Card>
+            <CardHeader>
+              <CardTitle>Experimental Feature</CardTitle>
+            </CardHeader>
+          </Card>
+        </FeatureEnabled>
+        <FeatureEnabled featureFlag="MULTIPLE_ALLOWANCES">
+          <Card>
+            <CardHeader>
+              <CardTitle>Multiple Allowances</CardTitle>
+            </CardHeader>
+          </Card>
+        </FeatureEnabled>
+        <FeatureEnabled featureFlag="DISABLED_FEATURE">
+          <Card>
+            <CardHeader>
+              <CardTitle>DISABLED</CardTitle>
+            </CardHeader>
+          </Card>
+        </FeatureEnabled>
+      </div>
+ -->
