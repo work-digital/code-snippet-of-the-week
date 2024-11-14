@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo-Klassen Beispiel</title>
+    <style>
+      /* :is() - Vereinfacht das Schreiben von Selektoren */
+      :is(.container, .wrapper) :is(h1, h2, h3) {
+        color: blue;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Bad practice: */
+      .container h1,
+      .container h2,
+      .container h3,
+      .wrapper h1,
+      .wrapper h2,
+      .wrapper h3 {
+        color: blue;
+        font-family: Arial, sans-serif;
+      }
+
+      /* :where() - Hat immer eine Spezifität von 0. gruppiert das styling */
+      :where(.container, .item) {
+        margin: 10px;
+        padding: 5px;
+        border: 1px solid yellow;
+      }
+
+      /* :has() - Stile ein Eltern-Element, wenn es ein Kind mit der Klasse .child enthält */
+      .parent:has(.child) {
+        border: 2px solid green;
+        background-color: #f0f0f0;
+      }
+
+      /* :not(:has()) - Stile ein Eltern-Element, wenn es kein Kind mit der Klasse .child enthält */
+      .parent:not(:has(.child)) {
+        border: 2px solid red;
+        background-color: #fff0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Title 1</h1>
+    <h2>Title 2</h2>
+    <h3 class="title3">Title 3</h3>
+
+    <div class="container">
+      <div class="item">Item 1</div>
+      <div class="item">Item 2</div>
+      <div>Item 3 - No item Class</div>
+      <div class="item">Item 4</div>
+    </div>
+
+    <div class="parent">
+      <div class="child">Has Child Element</div>
+    </div>
+    <div class="parent">Not has Child</div>
+  </body>
+</html>
