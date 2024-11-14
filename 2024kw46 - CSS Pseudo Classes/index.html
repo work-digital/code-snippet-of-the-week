@@ -3,60 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pseudo-Klassen Beispiel</title>
+    <title>CSS Functional Pseudo Classes</title>
     <style>
-      /* :is() - Vereinfacht das Schreiben von Selektoren */
-      :is(.container, .wrapper) :is(h1, h2, h3) {
+      /*   Functional Pseudo Classes accept a selector list which is a comma-separated list of selectors. They are used to style elements based on their state or content. */
+
+      /* :where() - groups selectors without adding specificity - Standardlayout */
+      :where(.container, .box, .panel) {
+        padding: 10px;
+        background-color: green;
+        margin-bottom: 15px;
+      }
+
+      /* :is() - matches any element that matches any of the selectors in the list */
+      .highlight :is(h1, h2, h3) {
         color: blue;
-        font-family: Arial, sans-serif;
+        font-weight: bold;
       }
-
-      /* Bad practice: */
-      .container h1,
-      .container h2,
-      .container h3,
-      .wrapper h1,
-      .wrapper h2,
-      .wrapper h3 {
+      /* Bad: Repeating selectors */
+      /* .highlight h1,
+      .highlight h2,
+      .highlight h3 {
         color: blue;
-        font-family: Arial, sans-serif;
-      }
+        font-weight: bold;
+      } */
 
-      /* :where() - Hat immer eine Spezifität von 0. gruppiert das styling */
-      :where(.container, .item) {
-        margin: 10px;
-        padding: 5px;
-        border: 1px solid yellow;
+      /* :has() - selects parents based on child presence */
+      .card:has(h2) {
+        border: 2px solid #4caf50;
+        padding: 15px;
       }
+      /* Bad: Adding extra classes in HTML like .has-title for styling */
+      /* HTML: <div class="card has-title"><h2>Title</h2></div> */
 
-      /* :has() - Stile ein Eltern-Element, wenn es ein Kind mit der Klasse .child enthält */
-      .parent:has(.child) {
-        border: 2px solid green;
-        background-color: #f0f0f0;
+      /* :not() - styles elements not containing specific children */
+      .card:not(:has(h2)) {
+        background-color: red;
       }
-
-      /* :not(:has()) - Stile ein Eltern-Element, wenn es kein Kind mit der Klasse .child enthält */
-      .parent:not(:has(.child)) {
-        border: 2px solid red;
-        background-color: #fff0f0;
-      }
+      /* Bad: Using extra classes like .no-title increases HTML complexity */
+      /* HTML: <div class="card no-title"><p>Text</p></div> */
     </style>
   </head>
   <body>
-    <h1>Title 1</h1>
-    <h2>Title 2</h2>
-    <h3 class="title3">Title 3</h3>
+    <div class="card">
+      <h2>Title present</h2>
+      <p>This is a card with a title.</p>
+    </div>
 
+    <div class="card">
+      <p>This is a card without a title.</p>
+    </div>
+
+    <div class="content">
+      <h1>A Header</h1>
+      <p>A simple paragraph in .content</p>
+      <ul>
+        <li>A list item</li>
+      </ul>
+    </div>
     <div class="container">
-      <div class="item">Item 1</div>
-      <div class="item">Item 2</div>
-      <div>Item 3 - No item Class</div>
-      <div class="item">Item 4</div>
+      <p>Container</p>
     </div>
-
-    <div class="parent">
-      <div class="child">Has Child Element</div>
+    <div class="box">
+      <p>Box</p>
     </div>
-    <div class="parent">Not has Child</div>
+    <div class="panel">
+      <p>Panel</p>
+    </div>
+    <div class="highlight">
+      <h1>Highlighted Header 1</h1>
+      <h2>Highlighted Header 2</h2>
+      <h3>Highlighted Header 3</h3>
+    </div>
   </body>
 </html>
